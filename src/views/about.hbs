@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Aplicacion</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+
+    .wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .content-wrapper {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #0ba6bb;
+    }
+
+    .faq {
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      color: #0ba6bb;
+    }
+
+    p {
+      line-height: 1.5;
+    }
+
+    .custom-button {
+      display: inline-block;
+      background-color: #0ba6bb;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .custom-button:hover {
+      background-color: #007a8c;
+    }
+
+    .file-input {
+      display: none;
+    }
+
+    .custom-file-button {
+      background-color: #0ba6bb;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .custom-file-button:hover {
+      background-color: #007a8c;
+    }
+
+    .custom-file-label {
+      background-color: #fff;
+      padding: 5px 10px;
+      border: 1px solid #0ba6bb;
+      border-radius: 5px;
+    }
+
+    .file-confirmation {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      margin-top: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="content-wrapper">
+      <h1>Aplicacion</h1>
+
+      <!-- Agregamos un formulario para cargar archivos de Excel -->
+      <div class="faq">
+        <h3>Subir archivo de Excel</h3>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+          <label for="file" class="custom-file-button">Seleccionar archivo</label>
+          <input type="file" id="file" name="excelFile" accept=".xlsx" class="file-input">
+          <input type="submit" value="Procesar" class="custom-button">
+        </form>
+
+        <!-- Mostramos la confirmación del archivo subido -->
+        <div id="file-confirmation" class="file-confirmation" style="display: none;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Agregamos una función JavaScript para mostrar la confirmación del archivo subido -->
+  <script>
+    const fileInput = document.getElementById('file');
+    const fileConfirmation = document.getElementById('file-confirmation');
+
+    // Capturamos el evento de selección de archivo y mostramos la confirmación
+    fileInput.addEventListener('change', (event) => {
+      const fileName = event.target.files[0].name;
+      fileConfirmation.innerHTML = `Archivo seleccionado: ${fileName}`;
+      fileConfirmation.style.display = 'block';
+    });
+  </script>
+</body>
+
+</html>
